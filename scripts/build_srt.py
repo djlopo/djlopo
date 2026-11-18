@@ -51,6 +51,12 @@ clock, idx, out = 0.0, 1, []
 for i, (role, text) in enumerate(SEG):
     mp3 = os.path.join(DIR, f"seg_{i:03d}_{role}.mp3")
     dur = probe(mp3)
+    if role == "PAUSE":
+        label = text.split("|", 1)[1] if "|" in text else text
+        out.append(f"{idx}\n{ts(clock)} --> {ts(clock + dur)}\n⏸  {label}\n")
+        idx += 1
+        clock += dur + SILENCE
+        continue
     cs = cues_for(text)
     total = sum(len(c) for c in cs) or 1
     t = clock
