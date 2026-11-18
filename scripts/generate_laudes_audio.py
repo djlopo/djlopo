@@ -107,30 +107,35 @@ def tts(role, text, path):
         return False
     return True
 
-# silencio de 0.45s entre segmentos
-sil = os.path.join(OUT, "sil.mp3")
-subprocess.run(["ffmpeg", "-y", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono",
-                "-t", "0.45", "-q:a", "9", sil], capture_output=True)
+SILENCE = 0.45  # silencio entre segmentos (s)
 
-mp3s, ok = [], 0
-for i, (role, text) in enumerate(SEG):
-    p = os.path.join(OUT, f"seg_{i:03d}_{role}.mp3")
-    if tts(role, text, p):
-        ok += 1
-        mp3s.append(p)
-        if i < len(SEG) - 1:
-            mp3s.append(sil)
-    print(f"  [{i+1}/{len(SEG)}] {role}  ({len(text)} chars)")
+def main():
+    sil = os.path.join(OUT, "sil.mp3")
+    subprocess.run(["ffmpeg", "-y", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono",
+                    "-t", str(SILENCE), "-q:a", "9", sil], capture_output=True)
 
-listf = os.path.join(OUT, "concat.txt")
-with open(listf, "w") as f:
-    for m in mp3s:
-        f.write(f"file '{os.path.abspath(m)}'\n")
+    mp3s, ok = [], 0
+    for i, (role, text) in enumerate(SEG):
+        p = os.path.join(OUT, f"seg_{i:03d}_{role}.mp3")
+        if tts(role, text, p):
+            ok += 1
+            mp3s.append(p)
+            if i < len(SEG) - 1:
+                mp3s.append(sil)
+        print(f"  [{i+1}/{len(SEG)}] {role}  ({len(text)} chars)")
 
-final = os.path.join(OUT, "laudes_jue19_final.mp3")
-subprocess.run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", listf,
-                "-c:a", "libmp3lame", "-q:a", "4", final], capture_output=True)
-dur = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
-                      "-of", "default=nw=1:nk=1", final], capture_output=True, text=True).stdout.strip()
-print(f"\nSegmentos OK: {ok}/{len(SEG)}")
-print(f"FINAL: {final}  ({os.path.getsize(final)//1024} KB, {dur}s)")
+    listf = os.path.join(OUT, "concat.txt")
+    with open(listf, "w") as f:
+        for m in mp3s:
+            f.write(f"file '{os.path.abspath(m)}'\n")
+
+    final = os.path.join(OUT, "laudes_jue19_final.mp3")
+    subprocess.run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", listf,
+                    "-c:a", "libmp3lame", "-q:a", "4", final], capture_output=True)
+    dur = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                          "-of", "default=nw=1:nk=1", final], capture_output=True, text=True).stdout.strip()
+    print(f"\nSegmentos OK: {ok}/{len(SEG)}")
+    print(f"FINAL: {final}  ({os.path.getsize(final)//1024} KB, {dur}s)")
+
+if __name__ == "__main__":
+    main()
