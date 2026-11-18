@@ -10,10 +10,12 @@ import os, re, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from generate_laudes_audio import SEG, SILENCE  # noqa: E402
 
 DIR = sys.argv[1]
 OUTSRT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(DIR, "subs.srt")
+MODNAME = sys.argv[3] if len(sys.argv) > 3 else "generate_laudes_audio"
+mod = __import__(MODNAME)
+SEG, SILENCE = mod.SEG, mod.SILENCE  # noqa: E402
 
 def probe(path):
     r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
