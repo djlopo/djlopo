@@ -11,6 +11,8 @@ Mejoras v2:
 Uso:  python3 -I generate_laudes_audio.py <carpeta_salida>
 """
 import json, os, subprocess, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import tts_cache  # noqa: E402
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else "."
 os.makedirs(OUT, exist_ok=True)
@@ -138,16 +140,10 @@ def norm(path):
 
 def tts(role, text, path):
     vid, settings = VOICES[role]
-    payload = json.dumps({"text": text, "model_id": MODEL, "voice_settings": settings})
-    url = f"https://api.elevenlabs.io/v1/text-to-speech/{vid}?output_format=mp3_44100_128"
-    r = subprocess.run(["curl", "-sS", "-X", "POST", url, "-H", "Content-Type: application/json",
-                        "-d", payload, "-o", path, "-w", "%{http_code}"], capture_output=True, text=True)
-    code = r.stdout.strip()
-    size = os.path.getsize(path) if os.path.exists(path) else 0
-    if code != "200" or size < 1500:
-        print(f"  ERROR {path}: HTTP {code} size {size}")
+    res = tts_cache.get_or_generate(vid, settings, text, path, MODEL)  # reutiliza de caché si existe
+    if res is None:
+        print(f"  ERROR {path}")
         return False
-    norm(path)
     return True
 
 def silence(path, secs):
