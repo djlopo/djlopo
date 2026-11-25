@@ -35,6 +35,12 @@ Entregar SIEMPRE un único prompt listo para pegar. El prompt debe empezar indic
 Reglas de marca comunes: dorado #d7b26e / azul noche; o paletas de la temporada litúrgica.
 Siempre sin texto ni marca de agua en la imagen (los rótulos los pone la plantilla).
 
+## Serie «Vidas de Santos» — voz del narrador
+- **Narrador (N):** voz `Syqs6p4s6hxhfAyhhlbS` (la cálida/grave), ajustes
+  `stability 0.42 · similarity 0.8 · style 0.26 · speed 1.0`. Elegida para toda la serie.
+- **Voz de las citas (V):** pendiente de elegir (para las palabras de Jesús y del santo).
+- Los tiempos y tonos por frase se afinarán con marcas (pausas/énfasis) en cada guion.
+
 ## Nota litúrgica — días especiales
 No todo es feria de Adviento. Ej.: **30 nov = San Andrés Apóstol (Fiesta, rojo)**, con lecturas
 y oficio propios. En esos días se usan los textos propios de la fiesta, no los de la feria.
