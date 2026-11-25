@@ -1,5 +1,5 @@
 # Paquete SEO — I Domingo de Adviento (29 nov 2026)
-Canal: **Tu Oración Diaria** (España · «vosotros»). Ciclo B.
+Canal: **Tu Oracion Diaria** · handle **@OracionDiariaHoyES** (España · «vosotros»). Ciclo B.
 
 > Normas rápidas de SEO para este canal:
 > - El **título** empieza por lo que la gente busca (LAUDES DE HOY, EVANGELIO DE HOY, SANTO ROSARIO…) + fecha + tiempo litúrgico.
@@ -21,7 +21,7 @@ Canal: **Tu Oración Diaria** (España · «vosotros»). Ciclo B.
 ```
 🌅 LAUDES DE HOY, domingo 29 de noviembre — I Domingo de Adviento. Comienza el día y el nuevo Año Litúrgico rezando juntos la Oración de la mañana de la Iglesia.
 
-Suscríbete y activa la 🔔 para rezar los Laudes cada día: [ENLACE_SUSCRIPCIÓN]
+Suscríbete y activa la 🔔 para rezar los Laudes cada día: https://www.youtube.com/@OracionDiariaHoyES?sub_confirmation=1
 Deja en los comentarios tu intención y la rezamos toda la comunidad. 🙏
 
 ⏱️ Capítulos
@@ -44,7 +44,7 @@ Deja en los comentarios tu intención y la rezamos toda la comunidad. 🙏
 
 Contenido conforme a la Liturgia de las Horas de la Iglesia Católica.
 
-#Laudes #Adviento #OraciónDeLaMañana #LiturgiaDeLasHoras #TuOraciónDiaria
+#Laudes #Adviento #OraciónDeLaMañana #LiturgiaDeLasHoras #TuOracionDiaria
 ```
 **Etiquetas:** laudes, laudes de hoy, laudes hoy, oración de la mañana, liturgia de las horas, adviento, primer domingo de adviento, laudes adviento, oración católica, rezar laudes, oficio divino, tu oración diaria
 
@@ -62,7 +62,7 @@ Contenido conforme a la Liturgia de las Horas de la Iglesia Católica.
 ```
 📖 EVANGELIO DE HOY, domingo 29 de noviembre — I Domingo de Adviento. Escuchamos las Lecturas de la Misa y una breve reflexión para empezar el Adviento con el corazón despierto.
 
-Suscríbete para el Evangelio de cada día: [ENLACE_SUSCRIPCIÓN]
+Suscríbete para el Evangelio de cada día: https://www.youtube.com/@OracionDiariaHoyES?sub_confirmation=1
 ¿Por quién lo ofreces hoy? Déjalo en los comentarios. 🙏
 
 ⏱️ Capítulos
@@ -82,7 +82,7 @@ La reflexión está inspirada en el comentario de fray Miguel de Burgos Núñez,
 
 Lecturas conforme al Leccionario de la Iglesia Católica (Ciclo B).
 
-#EvangelioDeHoy #Adviento #EvangelioDelDía #Lecturas #TuOraciónDiaria
+#EvangelioDeHoy #Adviento #EvangelioDelDía #Lecturas #TuOracionDiaria
 ```
 **Etiquetas:** evangelio de hoy, evangelio del día, evangelio de hoy domingo, lecturas de hoy, lecturas del día, reflexión del evangelio, adviento, marcos 13, velad, primer domingo de adviento, palabra de dios, tu oración diaria
 
@@ -102,7 +102,7 @@ Lecturas conforme al Leccionario de la Iglesia Católica (Ciclo B).
 ```
 📿 SANTO ROSARIO DE HOY — Misterios Gozosos, muy propios del Adviento (la Encarnación y el Nacimiento del Señor). Rézalo con nosotros en este I Domingo de Adviento.
 
-Suscríbete para rezar el Rosario cada día: [ENLACE_SUSCRIPCIÓN]
+Suscríbete para rezar el Rosario cada día: https://www.youtube.com/@OracionDiariaHoyES?sub_confirmation=1
 Deja tu intención en los comentarios y la llevamos en cada Avemaría. 🙏
 
 ⏱️ Capítulos
@@ -118,7 +118,7 @@ Deja tu intención en los comentarios y la llevamos en cada Avemaría. 🙏
 • Laudes: [ENLACE_LAUDES]
 • Evangelio y Lecturas: [ENLACE_EVANGELIO]
 
-#SantoRosario #Rosario #MisteriosGozosos #Adviento #TuOraciónDiaria
+#SantoRosario #Rosario #MisteriosGozosos #Adviento #TuOracionDiaria
 ```
 **Etiquetas:** santo rosario, rosario de hoy, rosario misterios gozosos, misterios gozosos, rosario gozosos, rezar el rosario, rosario de adviento, santo rosario hoy, virgen maría, rosario completo, tu oración diaria
 
@@ -136,7 +136,7 @@ Deja tu intención en los comentarios y la llevamos en cada Avemaría. 🙏
 ```
 🕯️ ENCENDIDO DE LA PRIMERA VELA de la Corona de Adviento, para rezar EN FAMILIA este I Domingo de Adviento. Un rito breve y sencillo: reúne a los tuyos, enciende la vela de la Esperanza y preparad juntos la venida del Señor.
 
-Guárdalo y repítelo cada domingo de Adviento. Suscríbete: [ENLACE_SUSCRIPCIÓN]
+Guárdalo y repítelo cada domingo de Adviento. Suscríbete: https://www.youtube.com/@OracionDiariaHoyES?sub_confirmation=1
 
 En este vídeo:
 • Significado de la Corona de Adviento
@@ -148,7 +148,7 @@ En este vídeo:
 • Laudes: [ENLACE_LAUDES]
 • Evangelio del día: [ENLACE_EVANGELIO]
 
-#Adviento #CoronaDeAdviento #PrimeraVela #OraciónEnFamilia #TuOraciónDiaria
+#Adviento #CoronaDeAdviento #PrimeraVela #OraciónEnFamilia #TuOracionDiaria
 ```
 **Etiquetas:** corona de adviento, primera vela de adviento, encender vela adviento, adviento en familia, oración en familia, primer domingo de adviento, vela de la esperanza, adviento 2026, tu oración diaria
 
@@ -163,7 +163,7 @@ En este vídeo:
 **Descripción:**
 ```
 Hoy empieza el Adviento. El Evangelio nos deja una palabra: «Velad» (Mc 13,37). Mantén el corazón despierto y la lámpara encendida. 🕯️
-Reza cada día con nosotros 👉 [ENLACE_SUSCRIPCIÓN]
+Reza cada día con nosotros 👉 https://www.youtube.com/@OracionDiariaHoyES?sub_confirmation=1
 #adviento #evangeliodehoy #catolico #oración #shorts
 ```
 **Etiquetas:** adviento, evangelio de hoy, velad, católico, oración, shorts, reflexión, fe
