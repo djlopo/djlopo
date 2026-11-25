@@ -30,6 +30,36 @@ content/                    Guiones (p. ej. Rosario)
 - **Qué hay cacheado**: `audio_cache/index.json` (voz + recorte del texto de cada clave).
 - Todo está **versionado en Git**, así que persiste entre sesiones y se puede auditar.
 
+## Vídeo (tiempo de Adviento)
+
+`scripts/build_video_adviento.py` es la **plantilla estándar de Adviento** (solo Adviento):
+mezcla el audio (voz + música `pad` en bucle muy baja + `chime` al entrar/cerrar),
+genera los subtítulos quemados y renderiza con movimiento lento, capa de luz,
+parpadeo de velas, viñeta animada y tipografía dorada/blanca sin borde.
+
+```
+python3 -I scripts/build_srt.py <carpeta> <carpeta>/subs.srt <modulo_generador>
+python3 -I scripts/build_video_adviento.py \
+    --audio final.mp3 --srt subs.srt --img corona.png --out video.mp4 \
+    --title LAUDES --subtitle "Domingo · I Semana de Adviento" --date "29 de Noviembre de 2026" \
+    --pad pad.wav --chime chime.wav
+```
+
+IMPORTANTE: se fija `format=gbrp` en toda la cadena de vídeo. `gradients`+`blend`
+trabajan en RGB y una conversión implícita a YUV en `eq`/`vignette` lavaba el color
+a magenta; con `gbrp` el color queda correcto (oscuro y cálido).
+
+### Generadores de un día (I Domingo de Adviento, 29 nov 2026, Ciclo B)
+- `gen_laudes_dom29adv.py`      Laudes del I Domingo
+- `gen_lecturas_dom29adv.py`    Lecturas + Evangelio (Mc 13, «Velad») + Reflexión (fray Miguel de Burgos, O.P.)
+- `gen_rosario_dom29adv.py`     Santo Rosario, misterios Gozosos
+- `gen_short_dom29adv.py`       Short vertical (~26 s)
+- `gen_especial_vela1.py`       Especial: Encendido de la 1ª vela en familia
+
+Las lecturas de la Misa se obtienen de dominicos.org con Playwright
+(`scratchpad/dominicos/fetch3.js <url> <salida>`), navegando por URL directa
+`/predicacion/homilia/DD-MM-AAAA/{lecturas,comentario-biblico,pautas-para-la-homilia}/`.
+
 ## Notas
 
 - Para que un mismo texto se reutilice entre tipos de vídeo, debe ser **idéntico**: por eso
