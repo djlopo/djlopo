@@ -20,15 +20,24 @@ def dur(p):
         "-of","csv=p=0",p], capture_output=True, text=True).stdout.strip() or 0)
 
 def chain_audio(durs):
-    """Concatena voz-adv-01..09 con GAP de silencio. Devuelve offsets O_i."""
+    """Concatena voz-adv-01..09 con GAP de silencio. Devuelve offsets O_i.
+    Antes de concatenar, nivela cada linea a -16 LUFS para igualar las voces
+    (Carlota y Javi). loudnorm no altera la duracion, asi que los tiempos valen."""
     sil = os.path.join(VOCES, "_sil.mp3")
     subprocess.run(["ffmpeg","-y","-f","lavfi","-i",f"anullsrc=r=44100:cl=mono","-t",str(GAP),
         "-c:a","libmp3lame","-q:a","9", sil], capture_output=True)
+    niv = []
+    for i in range(1, 10):
+        src = os.path.join(VOCES, f"voz-adv-{i:02d}.mp3")
+        dst = os.path.join(VOCES, f"_lvl-{i:02d}.mp3")
+        subprocess.run(["ffmpeg","-y","-i",src,"-af","loudnorm=I=-16:TP=-1.5:LRA=11",
+            "-ar","44100","-ac","1","-c:a","libmp3lame","-q:a","2", dst], capture_output=True)
+        niv.append(dst if os.path.exists(dst) and os.path.getsize(dst) > 1000 else src)
     lst = os.path.join(VOCES, "_list.txt")
     with open(lst, "w") as f:
-        for i in range(1, 10):
-            f.write(f"file '{os.path.join(VOCES, f'voz-adv-{i:02d}.mp3')}'\n")
-            if i < 9:
+        for i in range(9):
+            f.write(f"file '{niv[i]}'\n")
+            if i < 8:
                 f.write(f"file '{sil}'\n")
     out = os.path.join(PUB, "voz-adviento.mp3")
     subprocess.run(["ffmpeg","-y","-f","concat","-safe","0","-i",lst,"-c:a","libmp3lame","-q:a","2", out],

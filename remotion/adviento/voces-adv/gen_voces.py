@@ -4,15 +4,17 @@ Carlota (impares) / Adolfo Banderas (pares). Guarda mp3 + palabras alineadas."""
 import json, base64, subprocess, os, sys, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CARLOTA = "ODQQw99uvxi7piSglbBJ"
-ADOLFO = "IL7GIOA2FIurcXETHVY7"
+CARLOTA = "ODQQw99uvxi7piSglbBJ"              # impares, speed 0.98
+ADOLFO = "aYbngTsp5kp0sibI3Z0T"               # pares = Javi Rojas (SyncState), speed 1.08
 SET = {"stability": 0.5, "similarity_boost": 0.85, "style": 0.18, "use_speaker_boost": True, "speed": 0.98}
+# NB: las lineas de hombre se regeneraron con Javi Rojas a speed 1.08 (style 0.25).
+# Los mp3 + alineaciones commiteados son la fuente real para el montaje.
 
 LINEAS = [
     (CARLOTA, "Este domingo se enciende la primera vela del Adviento. ¿Sabes por qué?"),
     (ADOLFO,  "La corona de Adviento. Del latín «adventus»: venida. Es tiempo de esperar."),
     (CARLOTA, "Hamburgo, 1839. El pastor Wichern puso una vela por cada día hasta la Navidad."),
-    (ADOLFO,  "Un círculo sin fin, como el amor de Dios. El verde es vida y esperanza; y las bayas rojas, la sangre de Cristo."),
+    (ADOLFO,  "Un círculo sin fin, como el amor de Dios. El verde es vida y esperanza; y los frutos rojos recuerdan el Edén: el pecado, y la promesa del Salvador."),
     (CARLOTA, "Cuatro velas: tres moradas y una rosa. Una por cada domingo."),
     (ADOLFO,  "Cada domingo enciendes una más: esperanza, paz, alegría y amor. Y vuelves a encender las anteriores."),
     (CARLOTA, "Y en el centro, una vela blanca, para la noche de Navidad."),

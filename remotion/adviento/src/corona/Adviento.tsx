@@ -351,7 +351,7 @@ const Circulo: React.FC<{ s: number }> = ({ s }) => {
         <Frase s={s} a={T(24.0)} top={1320} texto="como el amor de Dios" size={62} color={K.tenue} />
       </div>
       <Frase s={s} a={T(26.4)} top={270} texto="Verde: vida y esperanza" oro={["Verde:"]} size={82} />
-      <Frase s={s} a={T(27.1)} top={1230} texto="y las bayas rojas, la sangre de Cristo" rojo={["bayas", "rojas,"]} oro={["Cristo"]} size={58} />
+      <Frase s={s} a={T(27.1)} top={1230} texto="y los frutos rojos, los del Edén" rojo={["frutos", "rojos,"]} oro={["Edén"]} size={60} />
     </AbsoluteFill>
   );
 };
