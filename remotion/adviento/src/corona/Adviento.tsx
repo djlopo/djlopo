@@ -571,50 +571,59 @@ const Hacer: React.FC<{ s: number; f: number }> = ({ s, f }) => {
 
 const Cierre: React.FC<{ s: number }> = ({ s }) => {
   const base = e(s, E.cierre, 0.4);
-  const linea = ventana(s, E.cierre, T(60.8), 0.4);
-  const marca = e(s, T(60.5), 0.6);
-  const late = 1 + 0.05 * Math.sin(Math.max(0, s - T(61.2)) * 6) * Math.exp(-Math.max(0, s - T(61.2)) * 0.5);
+  const guarda = e(s, T(58.9), 0.5);
+  const late = 1 + 0.06 * Math.sin(Math.max(0, s - T(59.4)) * 6) * Math.exp(-Math.max(0, s - T(59.4)) * 0.5);
+  // tarjeta de marca en los ~2,3 s finales (tras la narración de cierre)
+  const marca = e(s, FIN_ADVIENTO - 2.3, 0.5);
   return (
     <AbsoluteFill style={{ opacity: base }}>
-      <div style={{ opacity: linea }}>
-        <Frase s={s} a={T(58.4)} top={300} texto="Este domingo, enciende la primera" oro={["primera"]} size={82} />
-      </div>
-      <AbsoluteFill style={{ opacity: marca }}>
-        <div style={{ position: "absolute", top: 250, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
-          <Img src={staticFile("adviento/logo.png")} style={{ width: 230, height: 230, filter: "drop-shadow(0 10px 40px rgba(244,196,106,0.45))" }} />
-        </div>
-        <div style={{ position: "absolute", top: 530, left: 40, right: 40, textAlign: "center" }}>
-          <div style={{ fontFamily: TIT, fontWeight: 700, fontSize: 96, color: K.oro, lineHeight: 1.05 }}>Reza con nosotros</div>
-          <div style={{ fontFamily: TIT, fontWeight: 700, fontSize: 96, color: K.marfil, lineHeight: 1.05 }}>este Adviento</div>
-        </div>
-        <div style={{ position: "absolute", top: 790, left: 110, right: 110, textAlign: "center", fontFamily: TXT, fontWeight: 800, fontSize: 42, color: K.tenue, lineHeight: 1.3 }}>
-          Cada domingo, un rito de encendido para hacerlo con los tuyos
-        </div>
-        <div style={{ position: "absolute", top: 1010, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
+      {/* Cierre «Guárdalo» sobre la corona (formato original) */}
+      <AbsoluteFill style={{ opacity: 1 - marca }}>
+        <Frase s={s} a={T(58.4)} top={250} texto="Este domingo, enciende la primera" oro={["primera"]} size={82} />
+        <div style={{ position: "absolute", top: 1290, left: 0, right: 0, display: "flex", justifyContent: "center", opacity: guarda }}>
           <div
             style={{
-              transform: `scale(${late})`,
+              transform: `scale(${(0.7 + 0.3 * Easing.out(Easing.back(2))(guarda)) * late})`,
               display: "flex",
               alignItems: "center",
               gap: 16,
               background: K.oro,
               color: K.noche,
               borderRadius: 999,
-              padding: "18px 38px",
+              padding: "18px 40px",
               fontFamily: TXT,
               fontWeight: 900,
               fontSize: 46,
             }}
           >
+            <svg width={34} height={42} viewBox="0 0 34 42">
+              <path d="M3 3h28v36L17 29 3 39z" fill={K.noche} />
+            </svg>
+            Guárdalo
+          </div>
+        </div>
+      </AbsoluteFill>
+      {/* Tarjeta de marca (2 s finales): isotipo + handle */}
+      <AbsoluteFill style={{ opacity: marca }}>
+        <div style={{ position: "absolute", top: 430, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
+          <Img src={staticFile("adviento/logo.png")} style={{ width: 220, height: 220, filter: "drop-shadow(0 10px 40px rgba(244,196,106,0.45))" }} />
+        </div>
+        <div style={{ position: "absolute", top: 700, left: 40, right: 40, textAlign: "center" }}>
+          <div style={{ fontFamily: TIT, fontWeight: 700, fontSize: 86, color: K.marfil, lineHeight: 1.05 }}>
+            Tu Oración <span style={{ color: K.oro }}>Diaria</span>
+          </div>
+        </div>
+        <div style={{ position: "absolute", top: 900, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, background: K.oro, color: K.noche, borderRadius: 999, padding: "16px 34px", fontFamily: TXT, fontWeight: 900, fontSize: 42 }}>
             <svg width={44} height={32} viewBox="0 0 44 32">
               <rect width={44} height={32} rx={9} fill={K.noche} />
               <path d="M18 9l12 7-12 7z" fill={K.oro} />
             </svg>
-            @OracionDiariaHoyES
+            @tuoraciondiariatv
           </div>
         </div>
-        <div style={{ position: "absolute", top: 1110, left: 0, right: 0, textAlign: "center", fontFamily: TXT, fontWeight: 800, fontSize: 34, color: K.tenue }}>
-          vídeo completo en YouTube
+        <div style={{ position: "absolute", top: 1008, left: 0, right: 0, textAlign: "center", fontFamily: TXT, fontWeight: 800, fontSize: 32, color: K.tenue }}>
+          vídeos completos en YouTube
         </div>
       </AbsoluteFill>
     </AbsoluteFill>
@@ -630,7 +639,7 @@ const Subtitulos: React.FC<{ s: number }> = ({ s }) => {
   });
   if (i < 0) return null;
   return (
-    <div style={{ position: "absolute", top: 1440, left: 70, right: 70, display: "flex", justifyContent: "center" }}>
+    <div style={{ position: "absolute", top: 1480, left: 70, right: 70, display: "flex", justifyContent: "center" }}>
       <div
         style={{
           background: "rgba(16,10,32,0.82)",

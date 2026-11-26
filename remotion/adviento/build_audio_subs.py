@@ -19,20 +19,25 @@ def dur(p):
     return float(subprocess.run(["ffprobe","-v","error","-show_entries","format=duration",
         "-of","csv=p=0",p], capture_output=True, text=True).stdout.strip() or 0)
 
-def chain_audio(durs):
-    """Concatena voz-adv-01..09 con GAP de silencio. Devuelve offsets O_i.
-    Antes de concatenar, nivela cada linea a -16 LUFS para igualar las voces
-    (Carlota y Javi). loudnorm no altera la duracion, asi que los tiempos valen."""
+def chain_audio():
+    """Nivela (-16 LUFS) y recorta el silencio de cola de cada linea, luego
+    concatena con GAP de silencio. Devuelve offsets O_i, duracion total y las
+    duraciones ya procesadas. loudnorm y el recorte de cola no mueven los
+    tiempos de las palabras (estan dentro del habla), asi que los subs valen."""
     sil = os.path.join(VOCES, "_sil.mp3")
     subprocess.run(["ffmpeg","-y","-f","lavfi","-i",f"anullsrc=r=44100:cl=mono","-t",str(GAP),
         "-c:a","libmp3lame","-q:a","9", sil], capture_output=True)
-    niv = []
+    niv = []; durs = []
     for i in range(1, 10):
         src = os.path.join(VOCES, f"voz-adv-{i:02d}.mp3")
         dst = os.path.join(VOCES, f"_lvl-{i:02d}.mp3")
-        subprocess.run(["ffmpeg","-y","-i",src,"-af","loudnorm=I=-16:TP=-1.5:LRA=11",
+        # nivelar + recortar SOLO el silencio de cola (areverse -> quitar inicio -> areverse)
+        af = ("loudnorm=I=-16:TP=-1.5:LRA=11,"
+              "areverse,silenceremove=start_periods=1:start_duration=0.06:start_threshold=-45dB,areverse")
+        subprocess.run(["ffmpeg","-y","-i",src,"-af",af,
             "-ar","44100","-ac","1","-c:a","libmp3lame","-q:a","2", dst], capture_output=True)
-        niv.append(dst if os.path.exists(dst) and os.path.getsize(dst) > 1000 else src)
+        use = dst if os.path.exists(dst) and os.path.getsize(dst) > 1000 else src
+        niv.append(use); durs.append(dur(use))
     lst = os.path.join(VOCES, "_list.txt")
     with open(lst, "w") as f:
         for i in range(9):
@@ -47,7 +52,7 @@ def chain_audio(durs):
     for i in range(9):
         offs.append(round(o, 3))
         o += durs[i] + GAP
-    return offs, dur(out)
+    return offs, dur(out), durs
 
 def build_subs(offs):
     trozos = []
@@ -109,8 +114,7 @@ def extend_music(fin):
     return dur(src)
 
 if __name__ == "__main__":
-    durs = [dur(os.path.join(VOCES, f"voz-adv-{i:02d}.mp3")) for i in range(1, 10)]
-    offs, total_voz = chain_audio(durs)
+    offs, total_voz, durs = chain_audio()
     trozos = build_subs(offs)
     scenes, fin = build_datos(offs, durs)
     mlen = extend_music(fin)
