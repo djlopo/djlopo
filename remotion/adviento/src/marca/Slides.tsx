@@ -159,3 +159,21 @@ export const POST_B: Slide[] = [
 
 export const PostA: React.FC = () => <SlideView s={POST_A[useCurrentFrame()]} />;
 export const PostB: React.FC = () => <SlideView s={POST_B[useCurrentFrame()]} />;
+
+// ---------- Tarjeta de versículo (post de feed) ----------
+export const Verso: React.FC = () => (
+  <Fondo>
+    <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", padding: 90, textAlign: "center" }}>
+      <div style={{ position: "absolute", top: 150 }}><Pill>I DOMINGO DE ADVIENTO</Pill></div>
+      <div style={{ fontFamily: TIT, fontWeight: 700, fontSize: 210, color: K.oro, lineHeight: 1, textShadow: "0 8px 40px rgba(0,0,0,0.5)" }}>«Velad»</div>
+      <div style={{ fontFamily: TIT, fontWeight: 600, fontSize: 60, color: K.marfil, lineHeight: 1.25, marginTop: 36, maxWidth: 860 }}>
+        porque no sabéis qué día vendrá vuestro Señor
+      </div>
+      <div style={{ fontFamily: TXT, fontWeight: 800, fontSize: 40, color: K.tenue, letterSpacing: "0.06em", marginTop: 40 }}>MATEO 24, 42</div>
+      <div style={{ position: "absolute", bottom: 110, display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+        <Img src={staticFile("adviento/logo.png")} style={{ width: 78, height: 78 }} />
+        <div style={{ fontFamily: TXT, fontWeight: 900, fontSize: 34, color: K.marfil }}>@tuoraciondiariatv</div>
+      </div>
+    </AbsoluteFill>
+  </Fondo>
+);
