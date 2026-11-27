@@ -1,0 +1,54 @@
+{
+ "secciones": [
+  "Bienvenida",
+  "Señal de la cruz",
+  "Palabra de Dios · Isaías 9",
+  "Bendición de la corona",
+  "Primera vela · la Esperanza",
+  "Padrenuestro",
+  "Oración y bendición",
+  "Hasta el próximo domingo"
+ ],
+ "man": [
+  {
+   "i": 1,
+   "label": "Bienvenida",
+   "dur": 9.14
+  },
+  {
+   "i": 2,
+   "label": "Señal de la cruz",
+   "dur": 6.03
+  },
+  {
+   "i": 3,
+   "label": "Palabra de Dios · Isaías 9",
+   "dur": 11.18
+  },
+  {
+   "i": 4,
+   "label": "Bendición de la corona",
+   "dur": 14.99
+  },
+  {
+   "i": 5,
+   "label": "Primera vela · la Esperanza",
+   "dur": 9.8
+  },
+  {
+   "i": 6,
+   "label": "Padrenuestro",
+   "dur": 25.44
+  },
+  {
+   "i": 7,
+   "label": "Oración y bendición",
+   "dur": 10.87
+  },
+  {
+   "i": 8,
+   "label": "Hasta el próximo domingo",
+   "dur": 7.78
+  }
+ ]
+}
